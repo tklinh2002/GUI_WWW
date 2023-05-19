@@ -1,0 +1,12 @@
+.carousel-inner>.carousel-item {
+    position: relative;
+    -webkit-transition: 0s ease-in-out left;
+    -moz-transition: 0s ease-in-out left;
+    -o-transition: 0s ease-in-out left;
+    transition: 0s ease-in-out left;
+}
+
+.book-img {
+    width: 80%;
+    height: 350px;
+}

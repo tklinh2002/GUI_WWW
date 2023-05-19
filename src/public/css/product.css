@@ -1,0 +1,31 @@
+.check-filter {
+    max-height: 300px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+
+.card-title {
+    width: calc(100% - 10px);
+    min-height: 50px;
+}
+
+.card-title p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+#add-cart:active {
+    height: 100%;
+}
+
+.card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 35vh;
+}

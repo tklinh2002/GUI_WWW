@@ -1,0 +1,172 @@
+<div class="container-fluid text-center justify-content-center">
+    <div class="row d-md-flex justify-content-between">
+        <div class="col-2">
+            <a href="/" id="iconLeafBook">
+                <img src="../imgs/static/shop-icon.jpg" width="120px" alt="Logo">
+            </a>
+        </div>
+
+        <div class="d-md-block d-none col-7 mt-3 pt-4">
+            <form action="/product/search" method="get" class="d-flex align-items-center">
+                <input type="text" placeholder="Search for the desired products..." class="form-control me-2 ms-5"
+                    name="bookTitle" id="searchBookTitle">
+                <input type="submit" value="Search" class="btn btn-outline-success ">
+            </form>
+        </div>
+        <div class="col-5 col-md-3 row">
+            <div class="col-6 mt-3 pt-4 ps-5" id="showCart">
+                <a href="/cart">
+                    <i class="fa fa-shopping-bag fa-2x position-relative text-dark">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.85rem;" id="cart-quantity">
+                            0
+                        </span>
+                    </i>
+                </a>
+            </div>
+            {{!-- <div class="col-1 mt-3 pt-4" id="showLoved" hidden>
+                <a href="#">
+                    <i class="fas fa-heart"></i>
+                </a>
+            </div> --}}
+            <div class="col-6 col-md-5 mt-3 pt-4">
+                <div id="hiUser" style="margin-top: -16px;" hidden></div>
+                <button class="btn-dark p-2 border-0 rounded" data-bs-toggle="modal" data-bs-target="#loginModal"
+                    id="btnLogin">Login</button>
+                <button hidden class="btn-dark p-2 border-0 rounded" id="btnLogout">
+                    <a href="" class="text-light text-decoration-none">Logout</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-md-none d-block row py-4 d-flex align-items-center">
+        <form action="/product/search" method="get" class="d-flex align-items-center">
+            <input type="text" placeholder="Search for the desired products..." class="form-control me-2"
+                name="bookTitle">
+            <input type="submit" value="Search" class="btn btn-outline-success ">
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid text-center justify-content-center navbar-container" style="background-color: #26af61;">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg d-flex justify-content-end justify-content-md-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdown"
+                aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-light"></i>
+            </button>
+            <div class="collapse navbar-collapse d-md-flex justify-content-md-center" id="navbarDropdown">
+                <ul class="navbar-nav">
+                    <li><a href="/" class="nav-link text-light" id="showHome"> <b>HOME</b> </a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link text-light dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false"> <b>PRODUCTS</b> </a>
+                        <ul class="dropdown-menu" id="dropdown-menu">
+                            {{!-- <li><a class="dropdown-item" href="/product">Novels</a></li> --}}
+                            {{!-- Add list categories--}}
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li><a class="nav-link text-light" id="showSales" style="cursor: pointer;"> <b>SALES</b> </a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li><a href="/order" class="nav-link text-light" id="showOrders"> <b>YOUR ORDERS</b> </a></li>
+                </ul>
+                <ul class="navbar-nav" id="showIntroduction">
+                    <li><a href="/about" class="nav-link text-light"> <b>ABOUT</b> </a></li>
+                </ul>
+                <ul class="navbar-nav" id="admin" hidden>
+                    <li><a href="/admin/product" class="nav-link text-light"> <b>ADMIN</b> </a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+<!-- Modal Login -->
+<div class="modal fade" id="loginModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row text-center justify-content-center mt-4">
+                    <div class="col">
+                        <h3 class="text-success"><b>LOGIN TO LEAF BOOK</b></h3>
+                    </div>
+                </div>
+
+                <div class="row m-3">
+                    <label for="txtEmail">Email: </label>
+                    <input type="email" name="txtEmail" id="txtEmailLogin" class="form-control"
+                        value="quan@gmail.com" />
+                </div>
+                <div class="row m-3">
+                    <label for="txtPass">Password: </label>
+                    <input type="password" name="txtPass" id="txtPassLogin" class="form-control" value="password123" />
+                    <div><i class="text-danger mt-2" id="errLogin"></i></div>
+                </div>
+            </div>
+
+            <div class="modal-footer text-center justify-content-center">
+                <button type="button" class="btn btn-block btn-success" id="btnSubmitLogin">Login</button>
+                <button type="button" class="btn btn-block btn-danger" data-bs-dismiss="modal" id="btnSubmitLoginClose"
+                    hidden>Close</button>
+            </div>
+            <div class="row text-center">
+                <div class="mb-4 mt-2">Not a member? <a href="#" id="notHaveAccount" data-bs-toggle="modal"
+                        data-bs-target="#registerModal" class="text-decoration-none">Sign up</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Register -->
+<div class="modal fade" id="registerModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-light">
+            <div class="row text-center justify-content-center mt-5">
+                <div class="col">
+                    <h3 class="text-success"><b>ENTER REGISTRATION INFORMATION</b></h3>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="row m-3">
+                    <label for="txtName">Full Name: </label>
+                    <input type="text" name="txtName" id="txtName" class="form-control" />
+                </div>
+
+                <div class="row m-3">
+                    <label for="txtEmail">Email: </label>
+                    <input type="email" name="txtEmail" id="txtEmail" class="form-control" />
+                </div>
+
+                <div class="row m-3">
+                    <label for="txtPhone">Number Phone: </label>
+                    <input type="tel" name="txtPhone" id="txtPhone" class="form-control" />
+                </div>
+
+                <div class="row m-3">
+                    <label for="txtPass">Password: </label>
+                    <input type="password" name="txtPass" id="txtPass" class="form-control" />
+                </div>
+
+                <div class="row m-3">
+                    <label for="txtRepass">Retype password: </label>
+                    <input type="password" name="txtRepass" id="txtRepass" class="form-control" />
+                    <div><i class="text-danger mt-2" id="errRegister"></i></div>
+                </div>
+            </div>
+
+            <div class="modal-footer text-center justify-content-center">
+                <button type="submit" class="btn btn-block btn-success" id="btnSubmitRegister">SIGN UP</button>
+                <button type="button" class="btn btn-block btn-danger" data-bs-dismiss="modal" id="btnSubmitSignUpClose"
+                    hidden>Close</button>
+            </div>
+        </div>
+    </div>
+</div>

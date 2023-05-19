@@ -1,0 +1,115 @@
+<div class="container pt-3">
+    <div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-2 p-md-3 d-flex justify-content-center">
+                            <img class="img-fluid" src="{{product.bookImage}}" alt="image" style="height: 80vh; width: 70%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h4>{{product.bookTitle}}</h4>
+                <div>
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item"><span class="fa fa-star fa-star-checked"></span></li>
+                        <li class="list-inline-item"><span class="fa fa-star fa-star-checked"></span></li>
+                        <li class="list-inline-item"><span class="fa fa-star fa-star-checked"></span></li>
+                        <li class="list-inline-item"><span class="fa fa-star fa-star-checked"></span></li>
+                        <li class="list-inline-item"><span class="fa fa-star"></span></li>
+                    </ul>
+                </div>
+                <p class="status">
+                    <span>Status: </span>
+                    <span class="text-success">In stock</span>
+                </p>
+                <ul class="text-muted">
+                    <li><span>Author: </span>{{author.authorName}}</li>
+                    <li><span>Publisher: </span>{{publisher.publisherName}}</li>
+                    <li><span>Weight: </span>{{product.bookWeight}}</li>
+                    <li><span>Pages: </span>264</li>
+                </ul>
+                <div>
+                    <span class="text-danger " style="font-size: 30px;">{{toFixed (multiply product.bookPrice (divide (minus 100 product.bookDiscount) 100)) 2}}</span>
+                    <span class="ps-3" style="font-size: 18px; text-decoration: line-through;">{{product.bookPrice}}</span>
+                </div>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                    <input class="quantity" min="1" max="20" id="quantity" name="quantity" value="1" type="number">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                        class="plus"></button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-danger my-3" onclick="addToCartWithQuantity('{{basename product._links.book.href}}', event)">Add to cart</button>
+                    {{!-- <button type="button" class="btn btn-danger my-3">Mua ngay</button> --}}
+                </div>
+                <div>
+                    <div>Share:</div>
+                    <div>
+                        <div class="sharebuttons btn-group btn-group-justified">
+                            <a href="" class="btn btn-twitter" target="_blank">
+                                <i class="fab fa-twitter me-2"></i><span>Tweet</span>
+                            </a>
+                            <a href="" class="btn btn-facebook" target="_blank">
+                                <i class="fab fa-facebook me-2"></i><span>Facebook</span>
+                            </a>
+                            <a href="" class="btn btn-messenger">
+                                <i class="fab fa-facebook-messenger me-2"></i><span>Messenger</span>
+                            </a>
+                            <a href="" class="btn btn-copy me-2"><i class="fas fa-copy"></i> <span>Copy Link</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped border-bottom">
+                    <caption style="caption-side: top;">
+                        <h4 class="text-uppercase">Product Details</h4>
+                        <caption>
+                        <tbody>
+                    <tr>
+                        <td>Supplier:</td>
+                        <td>{{supplier.supplierName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Author:</td>
+                        <td>{{author.authorName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Translator: </td>
+                        <td>{{product.bookTranslator}}</td>
+                    </tr>
+                    <tr>
+                        <td>Publisher:</td>
+                        <td>{{publisher.publisherName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Weight (gr):</td>
+                        <td>{{product.bookWeight}}</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensions:</td>
+                        <td>{{product.bookSize}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pages:</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Type:</td>
+                        <td>{{product.bookType}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p style="text-align: justify;">
+                    {{product.bookDescription}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

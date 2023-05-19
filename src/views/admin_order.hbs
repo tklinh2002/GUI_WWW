@@ -1,0 +1,158 @@
+<div class="container-fluid my-5">
+    <div class="row ">
+        <!-- menu -->
+        <menu class="col-2 bg-light ">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar"
+                    aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="w-100 collapse navbar-collapse" id="sidebar">
+                    <ul class="navbar-nav w-100 d-flex flex-md-column text-md-start text-dark">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="adminNavbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">Product Management</a>
+                            <ul class="dropdown-menu" aria-labelledby="adminNavbarDropdown">
+                                <li><a class="dropdown-item" href="/admin/product">Products</a></li>
+                                <li><a class="dropdown-item" href="/admin/author">Authors</a></li>
+                                <li><a class="dropdown-item" href="/admin/category">Catagories</a></li>
+                                <li><a class="dropdown-item" href="/admin/publisher">Publishers</a></li>
+                                <li><a class="dropdown-item" href="/admin/supplier">Suppliers</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/admin/order">Order Management</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/admin/account">Account Management</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </menu>
+
+
+        <!-- content là cái thay đổi -->
+        <!-- content -->
+        <div class="bodyql col-10 ">
+
+            <!-- breadcrumb -->
+            <div class="row m-0">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Order Management</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <!-- search -->
+            <div class="row border pt-3 pb-3 ml-1 bg-light">
+                <div class="col-md-2 d-none d-md-block">
+                    <label class="float-end form-label pt-2" for="txtSearch">Search order:</label>
+                </div>
+                <div class="col-10 col-md-4">
+                    <form class="form-inline">
+                        <div class="form-group mx-sm-3 ">
+                            <input type="text" class="form-control" id="txtSearch" placeholder="search order by phone">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-2 col-md-1">
+                    <button type="submit" class="btn btn-primary searchOrder"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="col-6 col-md-2 mt-3 mt-md-0">
+                    <button type="button" id="btnRefresh" class="btn btn-info">REFRESH</button>
+                </div>
+                {{!-- <div class="col-6 col-md-3 mt-3 mt-md-0">
+                    <button type="button" id="btnAdd" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#modalCategory">ADD CATEGORY</button>
+                </div> --}}
+            </div>
+
+            <!-- table -->
+            <div class="border ml-1 overflow-auto">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>OrderID</th>
+                            <th>Number Phone</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Feature</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableOrder">
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalOrder" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order detail </h5><br>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row ">
+                    <div class="col-6 userCustomer justify-content-center">Ngjslakjdlakjs000</div>
+                    <div class="col-6 dateCreate">Ngjslakjdlakjs000</div>
+                </div>
+                <div class="row ">
+                    <h1>List book</h1>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Book title</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableOrderDetail">
+
+                    </tbody>
+                </table>
+                <div class="row">
+                    <h4 id="totalOrder">Total Order: </h4>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
